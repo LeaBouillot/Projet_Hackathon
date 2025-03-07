@@ -15,7 +15,9 @@
 
   <body>
     <header id="header">
-      <h1>HACKATHON</h1>
+      <div style="width: 100%; text-align: center;">
+        <h1>HACKATHON</h1>
+      </div>
       <div class="toggle-container">
         <input type="checkbox" id="mode-switch" class="mode-switch" />
         <label for="mode-switch" class="mode-label">
@@ -55,22 +57,30 @@
       </div>
     </div>
 
+    <!-- Dans votre fichier index.html, remplacez la section flex-wrap actuelle par ceci: -->
     <div class="flex-wrap">
       <div id="flex-wrap-video">
-        <span id="reultats-affichage">
-          <h2>Objets reconnus :</h2>
-          <div id="predictions"></div>
-        </span>
-        <canvas id="canvasVideo"></canvas>
         <video id="video" autoplay playsinline></video>
+        <canvas id="canvasVideo"></canvas>
       </div>
-      <h2>Choix de la webcam :</h2>
-      <div id="results"></div>
-      <h2>
-        Filtrage des captures d'écrans, cocher les items qui vous intéressent :
-      </h2>
-      <div id="objClass" class="grid-container-objClass"></div>
+          <div id="resltats-affichage">
+            <h2>Objets reconnus :</h2>
+            <div id="predictions"></div>
+          </div>
+      </div>
+
+      <div >
+        <h2>Choix de la webcam :</h2>
+        <div id="results"></div>
+        <h2>
+          Filtrage des captures d'écrans, cocher les items qui vous intéressent
+          :
+        </h2>
+        <div id="objClass" class="grid-container-objClass"></div>
+      </div>
+
       <div id="filterResult" class="grid-wrap"></div>
+
       <div class="btns">
         <button id="startButton">Start Camera</button>
         <button id="capture">Capture Écran</button>

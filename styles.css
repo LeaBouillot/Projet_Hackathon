@@ -1,14 +1,22 @@
 /* SELECTION DES COULEURS UTILISEES DANS LE PROJET */
 :root {
-  --main-bg-color: #d8efd3;
-  --secondary-bg-color: #95d2b3;
-  --accent-color: #55ad9b;
-  --light-bg-color: #f1f8e8;
-  --highlight-color: #add899;
-  --text-color: #0009;
-  --button-bg-color: #f1f8e8;
-  --button-text-color: #000;
+  /* Mode jour (default) - New color scheme */
+  --main-bg-color: #e0f0fa;
+  --secondary-bg-color: #809bea;
+  --accent-color: #0087c1;
+  --light-bg-color: #f5fcfd;
+  --highlight-color: #4dd0e1;
+  --text-color: #263238;
+  --button-bg-color: #3c279a;
+  --button-text-color: #fff;
+  --card-bg-color: #fff;
+  --card-border-color: #8580ea;
+  --input-bg-color: #f5fcfd;
+  --input-border-color: #8580ea;
+  --shadow-color: rgba(0, 0, 0, 0.1);
   --modal-bg-color: rgba(0, 0, 0, 0.5);
+  --toggle-bg-color: #80c3ea;
+  --toggle-handle-color: #fff;
 }
 
 /* ------------------------------------------------- */
@@ -26,131 +34,147 @@ body {
   );
   margin: 0;
   font-family: "Poppins", sans-serif;
-  transition: background-color 2s, color 2s;
   color: var(--text-color);
+  padding: 0 20px;
+  transition: background-color 0.5s, color 0.5s;
 }
+
 button {
   width: 22.5rem;
+  max-width: 100%;
   height: 3.75rem;
-  border-radius: 1rem;
+  border-radius: 10px;
   background-color: var(--button-bg-color);
   border: none;
   color: var(--button-text-color);
   font-size: 1.25rem;
+  font-weight: 500;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
   background-color: var(--highlight-color);
-  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px var(--shadow-color);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 h1 {
   font-size: 2.5rem;
-  font-weight: 400; /* 600 ou 300 */
+  font-weight: 600;
   color: var(--text-color);
+  margin: 1.5rem 0;
+  text-shadow: 0 2px 4px var(--shadow-color);
+  text-align: center; /* Ajouter cette ligne pour centrer le texte */
 }
 
 h2 {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 500;
   color: var(--text-color);
+  margin: 1.2rem 0;
 }
 
-header button {
-  margin: 2rem;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  position: relative;
 }
 
 input,
 select {
-  color: #333;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 5px;
+  color: var(--text-color);
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-border-color);
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
   outline: none;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: inset 0 2px 4px var(--shadow-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
 }
 
 footer {
-  margin-bottom: 2rem;
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
 }
 
 /* ------------------------------------------------- */
 /* CSS POUR LA FENETRE MODAL */
 .modal {
-  display: none; /* Initialement cachée */
+  display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  border: 2px solid #55ad9b;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   background: var(--modal-bg-color);
 }
 
 .modal-content {
   background-color: var(--main-bg-color);
   margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
+  padding: 2rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
   text-align: center;
   position: relative;
-  background-color: #d8efd3;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.5s;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  animation: fadeIn 0.3s, slideIn 0.3s;
+}
+
+.modal-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content input {
+  margin-bottom: 1rem;
+}
+
+.modal-content button {
+  margin: 0.5rem 0;
+  width: 100%;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); }
+  to { transform: translateY(0); }
 }
 
 /* ------------------------------------------------- */
 /* CSS POUR LE SWITCH DAY MODE TO NIGHT MODE */
-body.day-mode {
-  background: linear-gradient(
-    to bottom,
-    var(--main-bg-color),
-    var(--secondary-bg-color)
-  );
-  color: var(--text-color);
-}
-
-body.night-mode button {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-}
-
-body.night-mode {
-  background: linear-gradient(
-    to bottom,
-    var(--highlight-color),
-    var(--accent-color)
-  );
-  color: white;
-}
-
-body.day-mode button {
-  background-color: var(--accent-color);
-  color: white;
-}
-
 .toggle-container {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
 }
@@ -162,11 +186,12 @@ body.day-mode button {
 .mode-label {
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 30px;
   background-color: #ccc;
-  border-radius: 34px;
+  border-radius: 30px;
   position: relative;
   cursor: pointer;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .mode-label::after {
@@ -174,130 +199,348 @@ body.day-mode button {
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   background-color: white;
   border-radius: 50%;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.mode-switch:checked + .mode-label {
+  background-color: var(--accent-color);
 }
 
 .mode-switch:checked + .mode-label::after {
-  transform: translateX(26px);
+  transform: translateX(30px);
 }
 
-.mode-off {
+.mode-on, .mode-off {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  line-height: 1;
-  right: 10px;
-}
-
-.mode-on {
-  left: 10px;
-}
-
-.mode-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
 }
 
-#icon-sun {
-  margin-left: 2rem;
-  margin-top: 0.3rem;
+.mode-on {
+  left: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-#icon-moon {
-  margin-right: 0.7rem;
+.mode-off {
+  right: 8px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.mode-switch:checked + .mode-label .mode-on {
+  opacity: 1;
+}
+
+.mode-switch:checked + .mode-label .mode-off {
+  opacity: 0;
+}
+
+.mode-icon {
+  width: 16px;
+  height: 16px;
 }
 
 /* ------------------------------------------------- */
-/* CSS POUR LE COUNTENEUR, LA VIDEO ET DES BTNS EN DESSOUS */
+/* Mode jour et nuit */
+/* Le mode nuit sera activé lorsque le checkbox est coché */
+.mode-switch:checked ~ body {
+  background: linear-gradient(
+    to bottom,
+    #102027,
+    #263238
+  );
+  color: #e0e0e0;
+}
+
+body.day-mode {
+  background: linear-gradient(
+    to bottom,
+    var(--main-bg-color),
+    var(--secondary-bg-color)
+  );
+  color: var(--text-color);
+}
+
+body.night-mode {
+  background: linear-gradient(
+    to bottom,
+    #102027,
+    #263238
+  );
+  color: #e0e0e0;
+}
+
+body.night-mode button {
+  background-color: #006064;
+  color: white;
+}
+
+body.night-mode .modal-content {
+  background-color: #263238;
+  border-color: #006064;
+}
+
+body.night-mode input,
+body.night-mode select {
+  background-color: #102027;
+  border-color: #006064;
+  color: #e0e0e0;
+}
+
+body.night-mode #predictions,
+body.night-mode #resltats-affichage,
+body.night-mode #results,
+body.night-mode .grid-container-objClass {
+  background-color: #263238;
+  color: #e0e0e0;
+}
+
+body.night-mode .capture-card {
+  border-color: #006064;
+  background-color: #263238;
+}
+
+body.night-mode .checkbox-item {
+  background-color: #102027;
+}
+
+/* ------------------------------------------------- */
+/* CSS POUR LE CONTENEUR, LA VIDEO ET DES BTNS EN DESSOUS */
 .flex-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  max-width: 1200px;
+  padding: 1rem;
 }
+
+/* NOUVELLE MISE EN PAGE CÔTE À CÔTE */
 #flex-wrap-video {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
+
+/* Nouvelles classes pour la disposition côte à côte */
+.control-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.control-panel-left,
+.control-panel-right {
+  flex: 1;
+  min-width: 300px;
+}
+
 .btns {
-  display: block;
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 40%;
 }
+
+.btns button {
+  width: calc(50% - 0.5rem);
+  min-width: 250px;
+}
+
 video,
 #canvasVideo {
   width: 100%;
   max-width: 600px;
-  border: 2px solid var(--accent-color);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid var(--accent-color);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px var(--shadow-color);
+  background-color: var(--light-bg-color);
 }
 
 /* ------------------------------------------------- */
 /* CSS POUR L'INPUT PERMETTANT DE CHOISIR LA WEBCAM A UTILISER ET LA LISTE DE FILTRE */
 #results {
   margin-top: 1rem;
+  width: 50rem;
+  padding: 1rem;
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .grid-container-objClass {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
+  width: 50rem;
+  padding: 1.5rem;
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .checkbox-item {
   display: flex;
   align-items: center;
+  padding: 0.5rem;
+  background-color: var(--main-bg-color);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-item label {
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
 /* ------------------------------------------------- */
 /* CSS POUR LE CANVAS ET L'AFFICHAGE DES PREDICTIONS ET RESULTATS */
 #canvasVideo {
-  margin-right: 2rem;
-  margin-left: 2rem;
+  margin: 0;
+  flex: 1;
 }
 
 #images {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px var(--shadow-color);
 }
 
-#reultats-affichage {
+#resltats-affichage {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
+  width: 50rem;
+  padding: 1.5rem;
+  background-color: var(--light-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  margin-bottom: 1rem;
+}
+
+#predictions {
+  width: 96%;
+  min-height: 100px;
+  background-color: var(--main-bg-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
 }
 
 /* ------------------------------------------------- */
-/* CSS POUR L'AFFICHAGE DES CPATURES D'ECRAN ET LA SELECTION */
+/* CSS POUR L'AFFICHAGE DES CAPTURES D'ECRAN ET LA SELECTION */
 .grid-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin: 0 auto;
-  max-width: 1300px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  width: 100%;
 }
 
 .capture-card {
-  border: 5px solid var(--main-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--accent-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: var(--light-bg-color);
+}
+
+.capture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px var(--shadow-color);
+  border-color: var(--highlight-color);
 }
 
 .capture-card img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+#predictionsImage {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var( --secondary-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  width: 100%;
+}
+
+/* Responsive design amélioré */
+@media (max-width: 992px) {
+  #flex-wrap-video {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+  }
+  
+  .btns button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+    font-size: 1rem;
+    height: 3rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  .grid-container-objClass {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }

@@ -3,10 +3,10 @@
   /* Mode jour (default) - New color scheme */
   --main-bg-color: #e0f0fa;
   --secondary-bg-color: #809bea;
-  --accent-color: #0087c1;
+  --accent-color: #3a3fd2;
   --light-bg-color: #f5fcfd;
   --highlight-color: #4dd0e1;
-  --text-color: #263238;
+  --text-color: #262a38;
   --button-bg-color: #3c279a;
   --button-text-color: #fff;
   --card-bg-color: #fff;
@@ -69,7 +69,7 @@ button:active {
 h1 {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--button-bg-color);
   margin: 1.5rem 0;
   text-shadow: 0 2px 4px var(--shadow-color);
   text-align: center; /* Ajouter cette ligne pour centrer le texte */
@@ -162,13 +162,21 @@ footer {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(-20px); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 /* ------------------------------------------------- */
@@ -215,7 +223,8 @@ footer {
   transform: translateX(30px);
 }
 
-.mode-on, .mode-off {
+.mode-on,
+.mode-off {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -255,11 +264,7 @@ footer {
 /* Mode jour et nuit */
 /* Le mode nuit sera activé lorsque le checkbox est coché */
 .mode-switch:checked ~ body {
-  background: linear-gradient(
-    to bottom,
-    #102027,
-    #263238
-  );
+  background: linear-gradient(to bottom, #102027, #263238);
   color: #e0e0e0;
 }
 
@@ -273,11 +278,7 @@ body.day-mode {
 }
 
 body.night-mode {
-  background: linear-gradient(
-    to bottom,
-    #102027,
-    #263238
-  );
+  background: linear-gradient(to bottom, #102027, #263238);
   color: #e0e0e0;
 }
 
@@ -503,7 +504,7 @@ video,
 #predictionsImage {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: var( --secondary-bg-color);
+  background-color: var(--secondary-bg-color);
   border-radius: 12px;
   box-shadow: 0 4px 12px var(--shadow-color);
   width: 100%;
@@ -515,11 +516,11 @@ video,
     flex-direction: column;
     align-items: center;
   }
-  
+
   .control-panel {
     flex-direction: column;
   }
-  
+
   .btns button {
     width: 100%;
   }
@@ -531,15 +532,15 @@ video,
     font-size: 1rem;
     height: 3rem;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
-  
+
   h2 {
     font-size: 1.2rem;
   }
-  
+
   .grid-container-objClass {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
